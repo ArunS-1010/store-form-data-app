@@ -162,7 +162,7 @@ const FormComponent = () => {
           phno: row['Phone number'] || '',
           address: row['Address'] || '',
           city: row['City'] || '',
-          state: row['State'] || 'Tamil Nadu', // Default to Tamil Nadu if not provided
+          state: row['State'] || 'Tamil Nadu',
           amount: row['Amount Received'] || '',
           dateTime: row['Date & Time'] || new Date().toLocaleString(),
         }))
