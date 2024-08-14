@@ -197,7 +197,7 @@ const FormComponent = () => {
           />
         </div>
         <div className="form-group">
-          <label>Phone number</label>
+          <label>Phone number:</label>
           <input
             type="number"
             name="phno"
