@@ -62,8 +62,13 @@ const FormComponent = () => {
   }
 
   const handleDelete = (index) => {
-    const updatedData = submittedData.filter((_, i) => i !== index)
-    setSubmittedData(updatedData)
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this entry?'
+    )
+    if (confirmDelete) {
+      const updatedData = submittedData.filter((_, i) => i !== index)
+      setSubmittedData(updatedData)
+    }
   }
 
   const handlePrint = (data) => {
@@ -220,7 +225,7 @@ const FormComponent = () => {
 
       <hr />
 
-      <h2>Submitted Data</h2>
+      <h2>Submitted Data from Form</h2>
 
       <input
         className="upload-btn"
@@ -269,7 +274,7 @@ const FormComponent = () => {
           <CSVLink
             data={submittedData}
             headers={headers}
-            filename={'submitted-data.xlsx'}
+            filename={'submitted-data.csv'}
           >
             <button className="download-btn">
               Download <br /> (spreadsheet)
