@@ -76,43 +76,63 @@ const FormComponent = () => {
     printWindow.document.write('<html><head><title>Print</title>')
     printWindow.document.write('<style>')
     printWindow.document.write(`
-            body {
-                font-family: Arial, sans-serif;
-            }
-            .print-container {
-                display: flex;
-                justify-content: space-between;
-                width: 80%;
-                margin: 0 auto;
-            }
-            .print-titles, .print-data {
-                width: 45%;
-            }
-            .print-titles {
-                font-weight: bold;
-            }
-            .print-data {
-                padding-left: 10px;
-            }
-        `)
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .print-container {
+        width: 80%;
+        margin: 0 auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 8px;
+        vertical-align: top;
+      }
+      .title {
+        font-weight: bold;
+        width: 30%;
+      }
+      .data {
+        width: 70%;
+      }
+    `)
     printWindow.document.write('</style></head><body>')
     printWindow.document.write('<div class="print-container">')
-    printWindow.document.write('<div class="print-titles">')
-    printWindow.document.write(`<p>Name:</p>`)
-    printWindow.document.write(`<p>Address:</p>`)
-    printWindow.document.write(`<p>City:</p>`)
-    printWindow.document.write(`<p>State:</p>`)
-    printWindow.document.write(`<p>Amount Received:</p>`)
-    printWindow.document.write(`<p>Date & Time:</p>`)
-    printWindow.document.write('</div>')
-    printWindow.document.write('<div class="print-data">')
-    printWindow.document.write(`<p>${data.name}</p>`)
-    printWindow.document.write(`<p>${data.address}</p>`)
-    printWindow.document.write(`<p>${data.city}</p>`)
-    printWindow.document.write(`<p>${data.state}</p>`)
-    printWindow.document.write(`<p>${data.amount}</p>`)
-    printWindow.document.write(`<p>${data.dateTime}</p>`)
-    printWindow.document.write('</div>')
+    printWindow.document.write('<table>')
+    printWindow.document.write(
+      '<tr><td class="title">Name:</td><td class="data">' +
+        data.name +
+        '</td></tr>'
+    )
+    printWindow.document.write(
+      '<tr><td class="title">Address:</td><td class="data">' +
+        data.address +
+        '</td></tr>'
+    )
+    printWindow.document.write(
+      '<tr><td class="title">City:</td><td class="data">' +
+        data.city +
+        '</td></tr>'
+    )
+    printWindow.document.write(
+      '<tr><td class="title">State:</td><td class="data">' +
+        data.state +
+        '</td></tr>'
+    )
+    printWindow.document.write(
+      '<tr><td class="title">Amount Received:</td><td class="data">' +
+        data.amount +
+        '</td></tr>'
+    )
+    printWindow.document.write(
+      '<tr><td class="title">Date & Time:</td><td class="data">' +
+        data.dateTime +
+        '</td></tr>'
+    )
+    printWindow.document.write('</table>')
     printWindow.document.write('</div>')
     printWindow.document.write('</body></html>')
     printWindow.document.close()
@@ -130,7 +150,6 @@ const FormComponent = () => {
         const worksheet = workbook.Sheets[sheetName]
         const jsonData = XLSX.utils.sheet_to_json(worksheet)
 
-        // Ensure data is mapped to the correct keys
         const mappedData = jsonData.map((row) => ({
           name: row['Name'] || '',
           address: row['Address'] || '',
