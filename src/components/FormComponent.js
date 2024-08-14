@@ -81,7 +81,7 @@ const FormComponent = () => {
       }
       .print-container {
         width: 80%;
-        margin: 0 auto;
+        margin: 160px auto 0;
       }
       table {
         width: 100%;
