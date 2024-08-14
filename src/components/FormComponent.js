@@ -93,10 +93,10 @@ const FormComponent = () => {
       }
       .title {
         font-weight: bold;
-        width: 30%;
+        width: 40%;
       }
       .data {
-        width: 70%;
+        width: 60%;
       }
     `)
     printWindow.document.write('</style></head><body>')
