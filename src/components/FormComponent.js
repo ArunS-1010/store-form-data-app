@@ -225,7 +225,7 @@ const FormComponent = () => {
 
       <hr />
 
-      <h2>Submitted Data from Form</h2>
+      <h2>Submitted Data</h2>
 
       <input
         className="upload-btn"
