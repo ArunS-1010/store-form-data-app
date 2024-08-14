@@ -6,6 +6,7 @@ import './FormComponent.css'
 const FormComponent = () => {
   const [formData, setFormData] = useState({
     name: '',
+    phno: '',
     address: '',
     city: '',
     state: 'Tamil Nadu',
@@ -48,6 +49,7 @@ const FormComponent = () => {
     }
     setFormData({
       name: '',
+      phno: '',
       address: '',
       city: '',
       state: 'Tamil Nadu',
@@ -72,7 +74,7 @@ const FormComponent = () => {
   }
 
   const handlePrint = (data) => {
-    const printWindow = window.open('', '_blank')
+    const printWindow = window.open('', '_blank', 'width=400', 'height=500')
     printWindow.document.write('<html><head><title>Print</title>')
     printWindow.document.write('<style>')
     printWindow.document.write(`
@@ -105,6 +107,11 @@ const FormComponent = () => {
     printWindow.document.write(
       '<tr><td class="title">Name:</td><td class="data">' +
         data.name +
+        '</td></tr>'
+    )
+    printWindow.document.write(
+      '<tr><td class="title">Phone no:</td><td class="data">' +
+        data.phno +
         '</td></tr>'
     )
     printWindow.document.write(
@@ -152,6 +159,7 @@ const FormComponent = () => {
 
         const mappedData = jsonData.map((row) => ({
           name: row['Name'] || '',
+          phno: row['Phone number'] || '',
           address: row['Address'] || '',
           city: row['City'] || '',
           state: row['State'] || 'Tamil Nadu', // Default to Tamil Nadu if not provided
@@ -167,6 +175,7 @@ const FormComponent = () => {
 
   const headers = [
     { label: 'Name', key: 'name' },
+    { label: 'Phone number', key: 'phno' },
     { label: 'Address', key: 'address' },
     { label: 'City', key: 'city' },
     { label: 'State', key: 'state' },
@@ -183,6 +192,16 @@ const FormComponent = () => {
             type="text"
             name="name"
             value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Phone number</label>
+          <input
+            type="number"
+            name="phno"
+            value={formData.phno}
             onChange={handleChange}
             required
           />
@@ -259,6 +278,7 @@ const FormComponent = () => {
             <tr>
               <th>No.</th>
               <th>Name</th>
+              <th>Phone number</th>
               <th>Address</th>
               <th>City</th>
               <th>State</th>
@@ -272,6 +292,7 @@ const FormComponent = () => {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{data.name}</td>
+                <td>{data.phno}</td>
                 <td>{data.address}</td>
                 <td>{data.city}</td>
                 <td>{data.state}</td>
